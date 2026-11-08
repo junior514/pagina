@@ -1,0 +1,1121 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Electroland: ingeniería eléctrica, automatización industrial, tableros eléctricos y capacitación técnica.">
+<title>Electroland | Ingeniería y Automatización</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --dark: #101820;
+  --dark-soft: #182631;
+  --yellow: #f4bd28;
+  --white: #ffffff;
+  --light: #f3f5f6;
+  --gray: #68747c;
+  --border: #e1e6e9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  color: var(--dark);
+  background: var(--white);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  width: min(1160px, 90%);
+  margin: auto;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.section-heading {
+  max-width: 650px;
+  margin-bottom: 45px;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: #a77a00;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(30px, 4vw, 43px);
+  line-height: 1.15;
+  margin-bottom: 17px;
+}
+
+.section-heading p,
+.about-text p {
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 49px;
+  padding: 0 25px;
+  background: var(--yellow);
+  color: var(--dark);
+  border: 1px solid var(--yellow);
+  font-weight: 800;
+  font-size: 13px;
+  transition: .3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #fff;
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border-color: rgba(255,255,255,.55);
+}
+
+.btn-outline:hover {
+  background: white;
+  color: var(--dark);
+}
+
+/* HEADER */
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+
+.navbar {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: white;
+  font-family: "Manrope", sans-serif;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.logo span {
+  color: var(--yellow);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color .25s;
+}
+
+.nav-links a:hover {
+  color: var(--yellow);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 27px;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 720px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: white;
+  background:
+    linear-gradient(90deg, rgba(9,17,24,.94) 0%, rgba(9,17,24,.78) 48%, rgba(9,17,24,.24) 100%),
+    url("https://images.unsplash.com/photo-1780034766295-43db0f2a0fb7?auto=format&fit=crop&w=2000&q=85")
+    center/cover no-repeat;
+}
+
+.hero-content {
+  max-width: 720px;
+  padding-top: 75px;
+  animation: appear 1s ease both;
+}
+
+.hero-label {
+  color: var(--yellow);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(42px, 6.5vw, 75px);
+  line-height: 1.04;
+  letter-spacing: -3px;
+  margin-bottom: 25px;
+}
+
+.hero h1 span {
+  color: var(--yellow);
+}
+
+.hero p {
+  max-width: 560px;
+  color: #d3d9dd;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* STRIP */
+
+.info-strip {
+  background: var(--yellow);
+  padding: 23px 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.info-item {
+  border-right: 1px solid rgba(16,24,32,.2);
+  padding-left: 25px;
+}
+
+.info-item:first-child {
+  padding-left: 0;
+}
+
+.info-item:last-child {
+  border: 0;
+}
+
+.info-item strong {
+  display: block;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.info-item span {
+  font-size: 12px;
+  color: #37414a;
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 75px;
+  align-items: center;
+}
+
+.about-image {
+  position: relative;
+}
+
+.about-image img {
+  height: 470px;
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--yellow);
+  padding: 22px 27px;
+  max-width: 230px;
+}
+
+.image-caption strong {
+  display: block;
+  font-family: "Manrope", sans-serif;
+  font-size: 23px;
+}
+
+.image-caption span {
+  font-size: 12px;
+}
+
+.about-text p {
+  margin-bottom: 18px;
+}
+
+.about-text .btn {
+  margin-top: 12px;
+}
+
+/* SERVICES */
+
+.services {
+  background: var(--light);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.service-card {
+  background: white;
+  border: 1px solid var(--border);
+  transition: transform .3s, box-shadow .3s;
+}
+
+.service-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 35px rgba(16,24,32,.09);
+}
+
+.service-card img {
+  height: 215px;
+}
+
+.service-content {
+  padding: 25px;
+}
+
+.service-number {
+  color: #b1840d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.service-content h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 19px;
+  margin: 10px 0;
+}
+
+.service-content p {
+  color: var(--gray);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* FEATURE */
+
+.feature {
+  background: var(--dark);
+  color: white;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 65px;
+}
+
+.feature-image img {
+  height: 420px;
+}
+
+.feature-copy p {
+  color: #b9c2c8;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.feature-copy h2 {
+  max-width: 500px;
+}
+
+.feature-list {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.feature-list li {
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+  color: #e0e5e8;
+  font-size: 14px;
+}
+
+.feature-list li::before {
+  content: "—";
+  color: var(--yellow);
+  font-weight: 800;
+  margin-right: 12px;
+}
+
+/* COURSES */
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.course-card {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  border: 1px solid var(--border);
+  min-height: 240px;
+}
+
+.course-card img {
+  height: 100%;
+  min-height: 240px;
+}
+
+.course-content {
+  padding: 26px;
+}
+
+.course-content small {
+  color: #a77a00;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.course-content h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 19px;
+  margin: 12px 0;
+}
+
+.course-content p {
+  color: var(--gray);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* PROJECTS */
+
+.projects {
+  background: var(--light);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.project-card img {
+  height: 310px;
+  opacity: .78;
+  transition: transform .5s, opacity .5s;
+}
+
+.project-card:hover img {
+  transform: scale(1.06);
+  opacity: .55;
+}
+
+.project-info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 25px;
+  color: white;
+  width: 100%;
+  background: linear-gradient(transparent, rgba(0,0,0,.85));
+}
+
+.project-info small {
+  color: var(--yellow);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.project-info h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+.project-note {
+  margin-top: 18px;
+  color: var(--gray);
+  font-size: 12px;
+}
+
+/* CONTACT */
+
+.contact {
+  background: var(--dark-soft);
+  color: white;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 70px;
+}
+
+.contact-copy p {
+  color: #bdc7cd;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.contact-detail {
+  padding: 17px 0;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+.contact-detail span {
+  display: block;
+  color: var(--yellow);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.contact-form {
+  background: white;
+  color: var(--dark);
+  padding: 35px;
+}
+
+.contact-form h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 17px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border);
+  outline: none;
+  background: #fafbfc;
+  color: var(--dark);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #c39415;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 115px;
+}
+
+.contact-form .btn {
+  width: 100%;
+}
+
+/* FOOTER */
+
+footer {
+  background: #0b1117;
+  color: white;
+  padding: 30px 0;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-content p {
+  color: #aeb8bf;
+  font-size: 12px;
+}
+
+/* ANIMATIONS */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 16px;
+  }
+
+  .about-grid,
+  .feature-grid {
+    gap: 35px;
+  }
+
+  .services-grid,
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .section {
+    padding: 70px 0;
+  }
+
+  .navbar {
+    min-height: 72px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    padding: 25px 5%;
+    background: var(--dark);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hero {
+    min-height: 680px;
+    background-position: 60% center;
+  }
+
+  .hero h1 {
+    letter-spacing: -1.5px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .info-item {
+    padding: 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(16,24,32,.2);
+    padding-bottom: 15px;
+  }
+
+  .about-grid,
+  .feature-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image img,
+  .feature-image img {
+    height: 330px;
+  }
+
+  .services-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .course-card {
+    grid-template-columns: 1fr;
+  }
+
+  .course-card img {
+    height: 220px;
+  }
+
+  .contact-form {
+    padding: 25px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+    <a href="#inicio" class="logo">ELECTRO<span>LAND.</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-label">Ingeniería eléctrica y automatización</div>
+      <h1>Soluciones que impulsan la <span>industria.</span></h1>
+      <p>
+        Desarrollamos soluciones eléctricas e industriales mediante
+        ingeniería, automatización y tecnología para mejorar los procesos
+        de nuestros clientes.
+      </p>
+      <div class="hero-buttons">
+        <a href="#servicios" class="btn">CONOCE NUESTROS SERVICIOS</a>
+        <a href="#contacto" class="btn btn-outline">CONTÁCTANOS</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="info-strip">
+  <div class="container info-grid">
+    <div class="info-item">
+      <strong>Ingeniería eléctrica</strong>
+      <span>Diseño, montaje e instalaciones</span>
+    </div>
+    <div class="info-item">
+      <strong>Automatización industrial</strong>
+      <span>Control y optimización de procesos</span>
+    </div>
+    <div class="info-item">
+      <strong>Capacitación técnica</strong>
+      <span>Formación para profesionales y técnicos</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="nosotros">
+  <div class="container about-grid">
+    <div class="about-image reveal">
+      <img
+        src="https://images.unsplash.com/photo-1682345262055-8f95f3c513ea?auto=format&fit=crop&w=1100&q=85"
+        alt="Técnico trabajando con cables eléctricos">
+      <div class="image-caption">
+        <strong>Electroland</strong>
+        <span>Ingeniería y soluciones industriales</span>
+      </div>
+    </div>
+
+    <div class="about-text reveal">
+      <span class="eyebrow">Conócenos</span>
+      <h2>Experiencia técnica al servicio de la industria.</h2>
+      <p>
+        En Electroland buscamos ofrecer soluciones integrales en ingeniería
+        eléctrica, instalaciones y automatización industrial.
+      </p>
+      <p>
+        Trabajamos con un enfoque orientado a la calidad, seguridad,
+        eficiencia y mejora continua de los procesos industriales.
+      </p>
+      <p>
+        Nuestro objetivo es acompañar a cada cliente desde la planificación
+        hasta la implementación de sus soluciones técnicas.
+      </p>
+      <a href="#contacto" class="btn">SOLICITAR INFORMACIÓN</a>
+    </div>
+  </div>
+</section>
+
+<section class="section services" id="servicios">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Qué hacemos</span>
+      <h2>Servicios especializados para la industria.</h2>
+      <p>
+        Soluciones técnicas para instalaciones eléctricas, control,
+        automatización y mantenimiento industrial.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <article class="service-card reveal">
+        <img src="https://images.unsplash.com/photo-1780034766295-43db0f2a0fb7?auto=format&fit=crop&w=900&q=80" alt="Tablero eléctrico industrial">
+        <div class="service-content">
+          <span class="service-number">SERVICIO 01</span>
+          <h3>Tableros eléctricos</h3>
+          <p>Ensamblaje, cableado, montaje y adecuación de tableros eléctricos de control y fuerza.</p>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <img src="https://images.unsplash.com/photo-1780034766228-3fd70d9463c3?auto=format&fit=crop&w=900&q=80" alt="Componentes y cableado de control">
+        <div class="service-content">
+          <span class="service-number">SERVICIO 02</span>
+          <h3>Programación PLC</h3>
+          <p>Programación de controladores lógicos, automatización y supervisión de procesos industriales.</p>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <img src="https://images.unsplash.com/photo-1748256223955-5d5eb7fe7893?auto=format&fit=crop&w=900&q=80" alt="Equipamiento industrial">
+        <div class="service-content">
+          <span class="service-number">SERVICIO 03</span>
+          <h3>Hornos industriales</h3>
+          <p>Soluciones eléctricas y sistemas de control para equipos y procesos térmicos industriales.</p>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <img src="https://images.unsplash.com/photo-1741388222137-c0d3007ec173?auto=format&fit=crop&w=900&q=80" alt="Técnico realizando una instalación">
+        <div class="service-content">
+          <span class="service-number">SERVICIO 04</span>
+          <h3>Instalaciones eléctricas</h3>
+          <p>Instalación, mantenimiento y adecuación de sistemas eléctricos industriales.</p>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <img src="https://images.unsplash.com/photo-1775519519950-9c48495b5488?auto=format&fit=crop&w=900&q=80" alt="Panel industrial con instrumentos">
+        <div class="service-content">
+          <span class="service-number">SERVICIO 05</span>
+          <h3>Automatización industrial</h3>
+          <p>Integración de sistemas de control, instrumentación y soluciones para procesos productivos.</p>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <img src="https://images.unsplash.com/photo-1682345262055-8f95f3c513ea?auto=format&fit=crop&w=900&q=80" alt="Trabajo técnico con cableado">
+        <div class="service-content">
+          <span class="service-number">SERVICIO 06</span>
+          <h3>Bandejas portacables</h3>
+          <p>Montaje y organización de rutas de cableado para instalaciones eléctricas industriales.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section feature">
+  <div class="container feature-grid">
+    <div class="feature-image reveal">
+      <img src="https://images.unsplash.com/photo-1780034766243-044492794729?auto=format&fit=crop&w=1100&q=85" alt="Unidad de control industrial">
+    </div>
+
+    <div class="feature-copy reveal">
+      <span class="eyebrow">Nuestro compromiso</span>
+      <h2>Tecnología, seguridad y eficiencia en cada solución.</h2>
+      <p>
+        Desarrollamos cada trabajo con atención a los requerimientos
+        técnicos y operativos de cada proyecto.
+      </p>
+      <ul class="feature-list">
+        <li>Soluciones orientadas a cada necesidad.</li>
+        <li>Enfoque en seguridad eléctrica.</li>
+        <li>Calidad en instalaciones y montaje.</li>
+        <li>Mejora de procesos industriales.</li>
+      </ul>
+      <a href="#contacto" class="btn">HABLEMOS DE TU PROYECTO</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cursos">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Formación técnica</span>
+      <h2>Capacitación para desarrollar nuevas habilidades.</h2>
+      <p>
+        Cursos orientados al aprendizaje práctico y al desarrollo
+        de competencias en electricidad y automatización industrial.
+      </p>
+    </div>
+
+    <div class="courses-grid">
+      <article class="course-card reveal">
+        <img src="https://images.unsplash.com/photo-1780034766228-3fd70d9463c3?auto=format&fit=crop&w=900&q=80" alt="Panel de control eléctrico">
+        <div class="course-content">
+          <small>Automatización</small>
+          <h3>Programación de PLC</h3>
+          <p>Fundamentos de controladores, lógica de programación y aplicaciones industriales.</p>
+        </div>
+      </article>
+
+      <article class="course-card reveal">
+        <img src="https://images.unsplash.com/photo-1775519519950-9c48495b5488?auto=format&fit=crop&w=900&q=80" alt="Instrumentación de tablero industrial">
+        <div class="course-content">
+          <small>Electricidad industrial</small>
+          <h3>Montaje de tableros eléctricos</h3>
+          <p>Conocimientos de componentes, cableado, montaje y sistemas de control.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section projects" id="proyectos">
+  <div class="container">
+    <div class="section-heading reveal">
+      <span class="eyebrow">Galería técnica</span>
+      <h2>Áreas de trabajo y soluciones industriales.</h2>
+      <p>
+        Una muestra visual de los entornos y especialidades relacionados
+        con nuestros servicios.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1780034766295-43db0f2a0fb7?auto=format&fit=crop&w=900&q=80" alt="Tablero de control eléctrico">
+        <div class="project-info">
+          <small>Referencia visual</small>
+          <h3>Tableros eléctricos</h3>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1741388222137-c0d3007ec173?auto=format&fit=crop&w=900&q=80" alt="Instalación eléctrica">
+        <div class="project-info">
+          <small>Referencia visual</small>
+          <h3>Instalaciones industriales</h3>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <img src="https://images.unsplash.com/photo-1748256223955-5d5eb7fe7893?auto=format&fit=crop&w=900&q=80" alt="Equipamiento industrial">
+        <div class="project-info">
+          <small>Referencia visual</small>
+          <h3>Equipamiento industrial</h3>
+        </div>
+      </article>
+    </div>
+
+    <p class="project-note">
+      Las imágenes de esta galería son ilustrativas. Se reemplazarán por
+      fotografías de trabajos reales de Electroland cuando estén disponibles.
+    </p>
+  </div>
+</section>
+
+<section class="section contact" id="contacto">
+  <div class="container contact-grid">
+
+    <div class="contact-copy reveal">
+      <span class="eyebrow">Contacto</span>
+      <h2>Conversemos sobre tu próximo proyecto.</h2>
+      <p>
+        Cuéntanos qué necesitas. Podemos ayudarte a encontrar una solución
+        para tus instalaciones o procesos industriales.
+      </p>
+
+      <div class="contact-detail">
+        <span>Empresa</span>
+        <strong>Electroland</strong>
+      </div>
+
+      <div class="contact-detail">
+        <span>Especialidad</span>
+        <strong>Ingeniería eléctrica y automatización</strong>
+      </div>
+
+      <div class="contact-detail">
+        <span>Correo electrónico</span>
+        <strong>Agregar correo empresarial</strong>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" id="contactForm">
+      <h3>Envíanos un mensaje</h3>
+
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" type="text" placeholder="Tu nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label for="correo">Correo electrónico</label>
+        <input id="correo" type="email" placeholder="correo@ejemplo.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="asunto">Asunto</label>
+        <input id="asunto" type="text" placeholder="Motivo de consulta" required>
+      </div>
+
+      <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
+      </div>
+
+      <button class="btn" type="submit">ENVIAR MENSAJE</button>
+      <p id="formMessage" style="font-size:12px;margin-top:12px;color:#68747c;"></p>
+    </form>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <a href="#inicio" class="logo">ELECTRO<span>LAND.</span></a>
+    <p>© <span id="year"></span> Electroland. Todos los derechos reservados.</p>
+    <p>Ingeniería eléctrica y automatización industrial.</p>
+  </div>
+</footer>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  menuToggle.textContent = navLinks.classList.contains("active") ? "×" : "☰";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    menuToggle.textContent = "☰";
+  });
+});
+
+// Animación al desplazarse
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+
+// Año automático
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Formulario demostrativo
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  document.getElementById("formMessage").textContent =
+    "Este formulario es una demostración. Para recibir mensajes hay que conectarlo a un servicio de envío.";
+
+  this.reset();
+});
+</script>
+
+</body>
+</html>

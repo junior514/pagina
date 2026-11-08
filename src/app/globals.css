@@ -1,0 +1,275 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b1218;
+  --color-ink-2: #121c25;
+  --color-ink-3: #1b2833;
+  --color-volt: #f4bd28;
+  --color-volt-2: #ffd864;
+  --color-arc: #1fb6d9;
+  --color-arc-2: #8be9ff;
+  --color-ember: #ff6b1a;
+  --color-mist: #f3f5f6;
+  --color-steel: #66737c;
+  --color-line: #e1e6e9;
+
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html, body {
+    overflow-x: clip;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+  ::selection {
+    @apply bg-volt text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-volt);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold tracking-[0.18em] text-volt uppercase;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-8 bg-current;
+  }
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-bold transition-all duration-300 ease-out-expo;
+  }
+  .btn-primary {
+    @apply bg-volt text-ink shadow-[0_10px_30px_-10px_rgba(244,189,40,0.7)] hover:-translate-y-0.5 hover:bg-volt-2 hover:shadow-[0_18px_40px_-12px_rgba(244,189,40,0.8)];
+  }
+  .btn-ghost {
+    @apply border border-white/25 text-white backdrop-blur hover:border-volt hover:text-volt;
+  }
+  .input {
+    @apply w-full rounded-xl border border-line bg-mist px-4 py-3 text-sm text-ink transition outline-none placeholder:text-steel/70 focus:border-volt focus:bg-white focus:ring-4 focus:ring-volt/20;
+  }
+  .btn-dark {
+    @apply bg-ink text-white hover:-translate-y-0.5 hover:bg-ink-3;
+  }
+}
+
+/* Brillo "eléctrico" recorriendo el botón */
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.8s var(--ease-out-expo);
+}
+.shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* Resaltado tipo marcador para fondos claros */
+.marker {
+  background: linear-gradient(transparent 62%, var(--color-volt) 62%, var(--color-volt) 92%, transparent 92%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Patrón de circuito sutil para fondos oscuros */
+.bg-circuit {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(244, 189, 40, 0.12) 1px, transparent 0),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 24px 24px, 96px 96px, 96px 96px;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+.pulse-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: inherit;
+  animation: pulse-ring 2s var(--ease-out-expo) infinite;
+  z-index: -1;
+}
+
+/* ---------- Efecto eléctrico del título del carrusel ---------- */
+
+/* Letra recién escrita: destello blanco-celeste que se enfría */
+.e-hot {
+  color: #fff !important;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 12px var(--color-arc-2),
+    0 0 26px var(--color-arc),
+    0 0 42px var(--color-volt);
+}
+
+/* Cursor = arco eléctrico */
+.e-cursor {
+  position: relative;
+  display: inline-block;
+  width: 0.07em;
+  height: 0.82em;
+  margin-left: 0.04em;
+  vertical-align: -0.06em;
+  border-radius: 2px;
+  background: var(--color-arc-2);
+  box-shadow:
+    0 0 6px #fff,
+    0 0 14px var(--color-arc),
+    0 0 28px var(--color-arc);
+  animation: e-blink 1s steps(1) infinite;
+}
+.e-cursor-live {
+  animation: e-arc 0.12s steps(2) infinite;
+}
+@keyframes e-blink {
+  50% { opacity: 0; }
+}
+@keyframes e-arc {
+  0% { transform: scaleY(1) translateX(0); filter: brightness(1); }
+  50% { transform: scaleY(1.12) translateX(0.5px); filter: brightness(1.8); }
+}
+
+/* Chispas que salen del cursor mientras escribe/borra */
+.e-spark {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 0 6px var(--color-volt), 0 0 10px var(--color-ember);
+  opacity: 0;
+}
+.e-spark-1 { animation: e-spark-a 0.42s ease-out infinite; }
+.e-spark-2 { animation: e-spark-b 0.5s ease-out 0.12s infinite; background: var(--color-arc-2); }
+.e-spark-3 { animation: e-spark-c 0.38s ease-out 0.24s infinite; background: var(--color-volt); }
+@keyframes e-spark-a {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(14px, -18px) scale(0.2); opacity: 0; }
+}
+@keyframes e-spark-b {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(18px, 10px) scale(0.2); opacity: 0; }
+}
+@keyframes e-spark-c {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(-6px, 20px) scale(0.2); opacity: 0; }
+}
+
+/* Parpadeo tipo fluorescente al terminar de escribir */
+.e-flicker {
+  animation: e-flicker 2.6s linear 1 both;
+}
+@keyframes e-flicker {
+  0%, 100% { opacity: 1; text-shadow: none; }
+  3% { opacity: 0.35; }
+  5% { opacity: 1; text-shadow: 0 0 18px rgba(139, 233, 255, 0.55); }
+  8% { opacity: 0.55; }
+  10% { opacity: 1; text-shadow: 0 0 10px rgba(139, 233, 255, 0.35); }
+  60% { opacity: 1; text-shadow: none; }
+  62% { opacity: 0.7; }
+  63% { opacity: 1; }
+}
+
+/* ---------- Cabecera de páginas internas: efecto "encendido" (CSS puro) ---------- */
+
+/* La foto se destapa de izquierda a derecha con un destello, como un tubo que enciende */
+.hero-power-on {
+  animation: hero-power-on 1.3s var(--ease-out-expo) both;
+}
+@keyframes hero-power-on {
+  0% { clip-path: inset(0 100% 0 0); filter: brightness(2.4) saturate(0); }
+  55% { filter: brightness(1.4) saturate(0.6); }
+  100% { clip-path: inset(0 0 0 0); filter: brightness(1) saturate(1); }
+}
+
+/* Línea de luz cian que barre la cabecera delante de la foto */
+.hero-scan {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 2px;
+  background: var(--color-arc-2);
+  box-shadow: 0 0 12px 2px var(--color-arc), 0 0 40px 8px rgba(31, 182, 217, 0.35);
+  pointer-events: none;
+  animation: hero-scan 1.3s var(--ease-out-expo) both;
+}
+@keyframes hero-scan {
+  0% { transform: translateX(0); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(100vw); opacity: 0; }
+}
+
+/* Título: cada palabra sube desde una máscara */
+.hero-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+  vertical-align: bottom;
+}
+.hero-word {
+  display: inline-block;
+  animation: hero-word 0.9s var(--ease-out-expo) both;
+  animation-delay: var(--d, 0s);
+}
+@keyframes hero-word {
+  from { transform: translateY(110%) rotate(5deg); opacity: 0; }
+  to { transform: translateY(0) rotate(0); opacity: 1; }
+}
+
+.hero-fade {
+  animation: hero-fade 0.8s var(--ease-out-expo) both;
+  animation-delay: var(--d, 0s);
+}
+@keyframes hero-fade {
+  from { transform: translateY(18px); opacity: 0; filter: blur(4px); }
+  to { transform: translateY(0); opacity: 1; filter: blur(0); }
+}
+
+/* Ícono de TikTok con su efecto cian/rojo característico */
+.tiktok-glitch svg {
+  filter: drop-shadow(-1.4px -1px 0 #25f4ee) drop-shadow(1.4px 1px 0 #fe2c55);
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
